@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Blog Master</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .about-hero {
+            background: linear-gradient(to right, #4a00e0, #8e2de2); /* Gradient background */
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+        }
+
+        .value-card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-card i {
+            font-size: 2.5rem;
+            color: #8e2de2;
+            margin-bottom: 15px;
+        }
+
+        .team-section {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+    </style>
+</head>
+<body>
+
+<%- include("nav")-%>
+    <div class="about-hero">
+        <div class="container">
+            <h1>Our Mission & Vision</h1>
+            <p>Empowering bloggers and connecting communities through shared stories.</p>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <section class="mb-5">
+                    <h2>Our Story</h2>
+                    <p>Blog Master was born from a passion for storytelling and a desire to create a vibrant online community. We believe that everyone has a story to tell, and we're here to provide the platform for those stories to be heard.</p>
+                    <p>Our journey began with a simple idea: to build a space where writers could express themselves freely and readers could discover diverse perspectives. Today, we're proud to be a growing community of bloggers and readers from around the world.</p>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Our Core Values</h2>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="value-card">
+                                <i class="fas fa-lightbulb"></i>
+                                <h3>Innovation</h3>
+                                <p>We constantly seek new ways to improve and innovate.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="value-card">
+                                <i class="fas fa-users"></i>
+                                <h3>Community</h3>
+                                <p>We foster a supportive and inclusive environment.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="value-card">
+                                <i class="fas fa-shield-alt"></i>
+                                <h3>Integrity</h3>
+                                <p>We operate with honesty and transparency.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Call to Action Section -->
+    <div class="container text-center my-5">
+        <h2>Join Our Community</h2>
+        <p>Subscribe to our newsletter for the latest updates and articles!</p>
+        <a href="#" class="btn btn-primary">Subscribe Now</a>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="container text-center my-5">
+        <h4>Follow Us on Social Media</h4>
+        <a href="#" class="btn btn-outline-primary mx-2">Facebook</a>
+        <a href="#" class="btn btn-outline-info mx-2">Twitter</a>
+        <a href="#" class="btn btn-outline-danger mx-2">Instagram</a>
+    </div>
+
+    <%- include("footer")-%>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

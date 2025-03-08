@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Master - Explore Our Stories</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            overflow: hidden; /* Ensure rounded corners work properly */
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .blog-card img {
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .blog-card .card-body {
+            padding: 25px;
+        }
+
+        .blog-card .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .blog-card .card-text {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .blog-card .btn-primary {
+            background-color: #6c63ff;
+            border: none;
+        }
+
+        .blog-card .btn-primary:hover {
+            background-color: #5a52d9;
+        }
+
+        .blog-header {
+            background: linear-gradient(to right, #6c63ff, #8a7cff);
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+            margin-bottom: 40px;
+        }
+
+        .blog-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .blog-header p {
+            font-size: 1.2rem;
+        }
+
+        .sidebar {
+            padding: 30px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 25px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            color: #6c63ff;
+        }
+    </style>
+</head>
+<body>
+
+    <%- include("nav")-%>
+
+    <div class="blog-header">
+        <div class="container">
+            <h1>Discover Our Latest Stories</h1>
+            <p>Explore insightful articles and inspiring content.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card blog-card mb-4">
+                    <img src="/DigitalMarketing.jpg" class="card-img-top" alt="Blog Post 1">
+                    <div class="card-body">
+                        <h5 class="card-title">The Future of Digital Marketing</h5>
+                        <p class="card-text">Dive into the emerging trends and strategies shaping the digital marketing landscape. Learn how to stay ahead in this rapidly evolving field.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+
+                <div class="card blog-card mb-4">
+                    <img src="/Living.jpg" class="card-img-top" alt="Blog Post 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Exploring Sustainable Living</h5>
+                        <p class="card-text">Discover practical tips and insights on how to live a more sustainable lifestyle. From reducing waste to eco-friendly practices, make a positive impact.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+
+                <div class="card blog-card mb-4">
+                    <img src="/CreativeWriting.jpg" class="card-img-top" alt="Blog Post 3">
+                    <div class="card-body">
+                        <h5 class="card-title">The Art of Creative Writing</h5>
+                        <p class="card-text">Unlock your creative potential with these essential writing techniques. Learn how to craft compelling stories and engage your audience.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+<!-- Sidebar Section -->
+            <div class="col-md-4">
+                <h2 class="mb-4">Sidebar</h2>
+
+                <!-- Search Section -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5>Search</h5>
+                        <input type="text" class="form-control" placeholder="Search...">
+                    </div>
+                </div>
+
+            <div class="col-lg-4">
+                <aside class="sidebar">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-tags mr-2"></i>Technology</a></li>
+                        <li><a href="#"><i class="fas fa-tags mr-2"></i>Lifestyle</a></li>
+                        <li><a href="#"><i class="fas fa-tags mr-2"></i>Writing</a></li>
+                        <li><a href="#"><i class="fas fa-tags mr-2"></i>Travel</a></li>
+                    </ul>
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-newspaper mr-2"></i>Latest Tech Innovations</a></li>
+                        <li><a href="#"><i class="fas fa-newspaper mr-2"></i>Tips for a Healthy Lifestyle</a></li>
+                        <li><a href="#"><i class="fas fa-newspaper mr-2"></i>How to Write a Novel</a></li>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <%- include("footer")-%>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

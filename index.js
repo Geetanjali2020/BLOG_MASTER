@@ -31,12 +31,22 @@ app.get("/", (req, res) => {
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port 127.0.0.1:${process.env.PORT}`);
 });
-app.get("/contact", (req, res) => {
-  res.render("contact");
-});
-app.get("/privacy-policy",(req,res) => {
+
+app.get("/page/privacy-policy",(req,res) => {
   res.render("privacy-policy");
 });
-app.get("/aboutUs",(req,res) => {
-  res.render("aboutUs");
+app.get("/page/about",(req,res) => {
+  res.render("about");
+});
+app.get("/page/terms-conditions",(req,res) => {
+  res.render("terms-conditions");
+});
+app.get("/page/FAQ",(req,res) => {
+  res.render("FAQ");
+});
+app.get("/page/blog",(resq,res) =>{
+  res.render("blog");
+});
+app.get("/page/Feedback",(resq,res) =>{
+  res.render("Feedback");
 });

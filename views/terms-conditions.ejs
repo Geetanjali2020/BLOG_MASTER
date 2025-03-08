@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms and Conditions - BlogMaster</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+    .terms-page {
+      padding: 60px 0;
+    }
+    .terms-page h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .terms-page h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+    .terms-page p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #333;
+    }
+    .terms-page ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    .terms-page ul li {
+      margin-bottom: 10px;
+    }
+    .contact-section {
+      background: #007bff;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+    .contact-section a {
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <%- include("nav")-%>
+
+  <!-- Terms and Conditions Section -->
+  <section class="terms-page">
+    <div class="container">
+      <h1>Terms and Conditions</h1>
+      <p>Welcome to BlogMaster! These terms and conditions outline the rules and regulations for the use of our website.</p>
+
+      <!-- Introduction -->
+      <h2>Introduction</h2>
+      <p>By accessing this website, we assume you accept these terms and conditions. Do not continue to use BlogMaster if you do not agree to all of the terms and conditions stated on this page.</p>
+
+      <!-- User Responsibilities -->
+      <h2>User Responsibilities</h2>
+      <p>As a user of BlogMaster, you agree to the following:</p>
+      <ul>
+        <li>You will not use this website for any unlawful purpose.</li>
+        <li>You will not post or share any content that is offensive, defamatory, or violates any laws.</li>
+        <li>You are responsible for maintaining the confidentiality of your account and password.</li>
+      </ul>
+
+      <!-- Intellectual Property -->
+      <h2>Intellectual Property</h2>
+      <p>All content on this website, including text, graphics, logos, and images, is the property of BlogMaster and is protected by intellectual property laws. You may not reproduce, distribute, or use any content without our prior written permission.</p>
+
+      <!-- Limitations of Liability -->
+      <h2>Limitations of Liability</h2>
+      <p>BlogMaster will not be liable for any damages arising out of or in connection with your use of this website. This includes, without limitation, direct loss, loss of business or profits, or any other indirect or consequential loss.</p>
+
+      <!-- Changes to Terms -->
+      <h2>Changes to Terms</h2>
+      <p>We reserve the right to modify these terms and conditions at any time. Any changes will be posted on this page, and your continued use of the website constitutes acceptance of those changes.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>If you have any questions about these Terms and Conditions, please contact us at <a href="mailto:info@blogmaster.com">info@blogmaster.com</a>.</p>
+    </div>
+  </section>
+
+  <%- include("footer")-%>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

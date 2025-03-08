@@ -1,83 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Privacy Policy - BlogMaster</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa; /* Light grey background */
-        }
-        .content-section {
-            background: white; /* White background for content */
-            padding: 50px 30px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-        }
-        .footer {
-            background: #343a40;
-            color: white;
-            padding: 20px 0;
-            margin-top: 30px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - BlogMaster</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+    .privacy-policy {
+      padding: 60px 0;
+    }
+    .privacy-policy h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+      background-color:#003cff;
+      text-align: center;
+      text-decoration-color: #f8f9fa;
+    
+    }
+    .privacy-policy h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+    .privacy-policy p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #333;
+    }
+    .privacy-policy ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    .privacy-policy ul li {
+      margin-bottom: 10px;
+    }
+    .contact-section {
+      background: #007bff;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+    .contact-section a {
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<%- include("nav")-%>
+
+  <!-- Privacy Policy Section -->
+  <section class="privacy-policy">
     <div class="container">
-        <a class="navbar-brand" href="#">BlogMaster</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Blogs</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#">Privacy Policy</a></li>
-            </ul>
-        </div>
+      <h1>Privacy Policy</h1>
+      <p>Your privacy is important to us. This Privacy Policy explains how BlogMaster collects, uses, and protects your personal information when you use our website.</p>
+
+      <!-- Information Collection -->
+      <h2>Information We Collect</h2>
+      <p>We may collect the following types of information:</p>
+      <ul>
+        <li><strong>Personal Information:</strong> Name, email address, and contact details when you register or contact us.</li>
+        <li><strong>Usage Data:</strong> Information about how you use our website, such as pages visited and time spent on the site.</li>
+        <li><strong>Cookies:</strong> We use cookies to enhance your experience and analyze website traffic.</li>
+      </ul>
+
+      <!-- How We Use Information -->
+      <h2>How We Use Your Information</h2>
+      <p>We use the information we collect for the following purposes:</p>
+      <ul>
+        <li>To provide and improve our services.</li>
+        <li>To communicate with you, including responding to your inquiries.</li>
+        <li>To analyze website usage and improve user experience.</li>
+        <li>To send promotional emails (only if you opt-in).</li>
+      </ul>
+
+      <!-- Data Security -->
+      <h2>Data Security</h2>
+      <p>We take the security of your data seriously. We implement industry-standard measures to protect your information from unauthorized access, alteration, or disclosure.</p>
+
+      <!-- Third-Party Services -->
+      <h2>Third-Party Services</h2>
+      <p>We may use third-party services (e.g., Google Analytics) to analyze website traffic. These services have their own privacy policies, and we encourage you to review them.</p>
+
+      <!-- Your Rights -->
+      <h2>Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Access and update your personal information.</li>
+        <li>Request deletion of your data.</li>
+        <li>Opt-out of receiving promotional emails.</li>
+      </ul>
+
+      <!-- Changes to This Policy -->
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page, and we encourage you to review it periodically.</p>
     </div>
-</nav>
+  </section>
 
-<!-- Privacy Policy Section -->
-<div class="container">
-    <div class="content-section">
-        <h2 class="text-center mb-4">Privacy Policy</h2>
-        <p><strong>Last Updated: [Date]</strong></p>
-
-        <h4>1. Information We Collect</h4>
-        <p>We may collect personal information such as name, email, and browsing data.</p>
-
-        <h4>2. How We Use Your Information</h4>
-        <p>Your data is used to enhance your experience, improve our services, and communicate updates.</p>
-
-        <h4>3. Sharing Your Information</h4>
-        <p>We do not sell personal data but may share it with trusted service providers or legal authorities when required.</p>
-
-        <h4>4. Your Rights</h4>
-        <p>You can update or delete your data, disable cookies, or request access to your information.</p>
-
-        <h4>5. Security</h4>
-        <p>We use security measures to protect your data, though no method is 100% secure.</p>
-
-        <h4>6. Changes to This Policy</h4>
-        <p>We may update this policy. Check this page periodically for changes.</p>
-
-        <h4>7. Contact Us</h4>
-        <p>If you have any questions, contact us at <a href="mailto:info@blogmaster.com">info@blogmaster.com</a>.</p>
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@blogmaster.com">info@blogmaster.com</a>.</p>
     </div>
-</div>
+  </section>
 
-<!-- Footer -->
-<div class="footer text-center">
-    <p>© 2025 BlogMaster | All rights reserved</p>
-</div>
+  
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <%- include("footer")-%>
 </body>
 </html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback - BlogMaster</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+    .navbar {
+      background: #007bff;
+    }
+    .navbar-brand, .nav-link {
+      color: white !important;
+    }
+    .feedback-section {
+      padding: 60px 0;
+    }
+    .feedback-section h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .feedback-form {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    .feedback-form label {
+      font-weight: bold;
+    }
+    .feedback-form .form-control {
+      margin-bottom: 20px;
+    }
+    .feedback-form .btn {
+      background: #007bff;
+      color: white;
+      font-weight: bold;
+      padding: 10px 30px;
+      border-radius: 25px;
+    }
+    .feedback-form .btn:hover {
+      background: #0056b3;
+    }
+    .footer {
+      background: #333;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <%- include("nav")-%>
+  <!-- Feedback Section -->
+  <section class="feedback-section">
+    <div class="container">
+      <h1>We'd Love to Hear From You!</h1>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="feedback-form">
+            <form id="feedbackForm">
+              <!-- Name Field -->
+              <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+              </div>
+              <!-- Email Field -->
+              <div class="mb-3">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+              </div>
+              <!-- Feedback Field -->
+              <div class="mb-3">
+                <label for="feedback" class="form-label">Your Feedback</label>
+                <textarea class="form-control" id="feedback" rows="5" placeholder="Share your feedback with us..." required></textarea>
+              </div>
+              <!-- Rating Field -->
+              <div class="mb-3">
+                <label for="rating" class="form-label">Rating</label>
+                <select class="form-control" id="rating" required>
+                  <option value="">Select a rating</option>
+                  <option value="5">5 - Excellent</option>
+                  <option value="4">4 - Very Good</option>
+                  <option value="3">3 - Good</option>
+                  <option value="2">2 - Fair</option>
+                  <option value="1">1 - Poor</option>
+                </select>
+              </div>
+              <!-- Submit Button -->
+              <div class="text-center">
+                <button type="submit" class="btn">Submit Feedback</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pop-up Message Modal -->
+  <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="feedbackModalLabel">Feedback Submitted</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Thank you for your feedback! We appreciate your input.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <%- include("footer")-%>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    // Handle form submission
+    document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the form from submitting
+
+      // Show the pop-up message
+      const feedbackModal = new bootstrap.Modal(document.getElementById('feedbackModal'));
+      feedbackModal.show();
+
+      // Optional: Reset the form after submission
+      document.getElementById('feedbackForm').reset();
+    });
+  </script>
+  
+</body>
+</html>
