@@ -26,24 +26,14 @@
           <input
             type="text"
             class="form-control"
-            id="firstname"
-            placeholder="Enter your firstname"
+            id="name"
+            placeholder="Enter your name"
             required
             autocomplete="username"
           />
-          <label for="firstname">first Name</label>
+          <label for="firstname"> Name</label>
         </div>
-        <div class="form-floating">
-            <input
-              type="text"
-              class="form-control"
-              id="lastname"
-              placeholder="Enter your lastname"
-              required
-              autocomplete="username"
-            />
-            <label for="lastname"> last Name</label>
-          </div>
+      
 
         <div class="form-floating">
           <input
@@ -85,8 +75,8 @@
       const doRegister = async (event) => {
         try {
           event.preventDefault();
-          const firstname = document.getElementById("firstname").value;
-          const lastname = document.getElementById("lastname").value;
+          const name = document.getElementById("name").value;
+         
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
           const response = await fetch("/auth/register", {
@@ -95,7 +85,7 @@
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ firstname,lastname ,email, password }), // Include name in the request body
+            body: JSON.stringify({ name,email, password }), // Include name in the request body
           });
           const data = await response.json();
           if (data.error) {

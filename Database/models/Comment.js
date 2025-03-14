@@ -1,9 +1,26 @@
-// Comment Schema
-const commentSchema = new mongoose.Schema({
-    post_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Post', required: true },
-    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    content: { type: String, required: true },
-    created_at: { type: Date, default: Date.now }
+import mongoose from "mongoose";
+const Schema = mongoose.Schema;
+
+const commentSchema = new Schema({
+  authorId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  content: {
+    type: String,
+    required: true
+  },
+  postId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Post',
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 });
-const Comment=mongoose.model('Comment',commentSchemaSchema);
+
+const Comment = mongoose.model('Comment', commentSchema);
 export default Comment;

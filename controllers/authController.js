@@ -13,8 +13,8 @@ export const login = async (req, res) => {
 };
 export const doRegister = async (req, res) => {
   try {
-    const { firstname, lastname, email, password } = req.body;
-    if (!firstname || !lastname || !email || !password) {
+    const { name, email, password } = req.body;
+    if (!name || !email || !password) {
       return res.json({
         error: "Please fill all the fields",
       });
@@ -27,8 +27,7 @@ export const doRegister = async (req, res) => {
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
-      firstname,
-      lastname,
+      name,
       email,
       password: hashedPassword,
     });

@@ -4,7 +4,9 @@ import path from "path";
 import connectToMongo from "./Database/db.js";
 import authRoute from "./routes/authRoute.js";
 import contactRoute from "./routes/contactRoute.js";
-
+import FeedbackRoute from "./routes/FeedbackRoute.js";
+import postRoute from "./routes/postRoute.js";
+import dashboardRoute from "./routes/dashboardRoute.js";
 
 import cors from "cors";
 dotenv.config();
@@ -22,6 +24,9 @@ const __dirname = path.resolve();
 app.set("views", path.join(__dirname, "views"));
 app.use("/auth",authRoute);
 app.use("/",contactRoute);
+app.use("/",FeedbackRoute);
+app.use("/",postRoute);
+app.use("/",dashboardRoute);
 app.use(express.static(path.join(__dirname,"public")));
 app.get("/", (req, res) => {
   res.render("index");
@@ -49,4 +54,11 @@ app.get("/page/blog",(resq,res) =>{
 });
 app.get("/page/Feedback",(resq,res) =>{
   res.render("Feedback");
+});
+app.get("/page/dashboard",(resq,res) =>{
+  res.render("dashboard");
+});
+app.get("/page/view/post/:title/:id",(req,res) =>{
+  const {title,id } = req.params;
+  res.render("viewpost.ejs",{title,id});
 });

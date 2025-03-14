@@ -10,23 +10,23 @@
    </style>
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">BlogMaster</a>
+      <a class="navbar-brand" href="#"style="color:white;"">BlogMaster</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/page/blog">Blogs</a></li>
-            <li class="nav-item"><a class="nav-link" href="/page/about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="/page/Feedback">Feedback</a></li>
-            <li class="nav-items"><a class="nav-link" href="/page/contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" style="color:white;" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" style="color:white;" href="/page/blog">Blogs</a></li>
+            <li class="nav-item"><a class="nav-link" style="color:white;" href="/page/about">About</a></li>
+            <li class="nav-item"><a class="nav-link" style="color:white;" href="/page/Feedback">Feedback</a></li>
+            <li class="nav-items"><a class="nav-link" style="color:white;"  href="/page/contact">Contact</a></li>
             <script>
                 if (!localStorage.getItem("token")){
-                    document.write(`<li class="nav-item"><a class="nav-link" href="/auth/register">Register</a></li>
-            <li class="nav-item"><a class="nav-link" href="/auth/login">Login</a></li>`)
+                    document.write(`<li class="nav-item"><a class="nav-link" href="/auth/register" style="color:white;">Register</a></li>
+            <li class="nav-item"><a class="nav-link" href="/auth/login" style="color:white;">Login</a></li>`)
                 }else{
-                    document.write( ` <li class="nav-item"><button class="nav-link" onclick="doLogout()">Logout</button></li>`)
+                    document.write( ` <li class="nav-item"><button class="nav-link" onclick="doLogout()" style="color:white; background-color:transparent; border:none;">Logout</button></li>`)
                 }
 const doLogout=()=>{
 localStorage.removeItem("token")

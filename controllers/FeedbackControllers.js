@@ -1,15 +1,15 @@
 import express from "express";
 import nodemailer from "nodemailer";
-import sendEmail from "../utils/sendEmail.js";
+import sendEmail from "../utils/sendFeedback.js";
 
 export const getFeedback = (req, res) => {
     res.render("Feedback");
 }
 
-export const createFeedback = (req,res)=>{
+export const createFeedback = async(req,res)=>{
     try {
         const {name,email,feedback,rating} = req.body;
-        sendEmail({
+      await  sendEmail({
             name,
             email,
             feedback,
