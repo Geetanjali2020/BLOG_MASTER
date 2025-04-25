@@ -175,9 +175,7 @@
   <div class="row d-flex justify-content-center align-items-center" id="latestPosts">
 
   </div>
-  <div class="text-center mt-4 my-5">
-    <a href="/page/blog" class="btn btn-primary"style="width:40%;">View All Articles</a>
-</div>
+ 
   </div>
   
   </section>
@@ -350,24 +348,35 @@
           const response = await fetch('/api/latest/posts');
           const latestPostsData = await response.json();
 
-          latestPostsData.posts.slice(0, 4).forEach(post => {
-              const postCard = `
-                 
-                
-                   <div class="col-md-4">
-          <div class="blog-card">
-            <img src="/uploads/${post.image}" alt="Blog 2">
-            <h3>${post.title}</h3>
-             <div class="post-card-meta mt-auto">
-                                  <span><i class="bi bi-clock"></i> ${Math.ceil(post.content.split(' ').length / 200)} min read</span>
-                                  <span><i class="bi bi-calendar3"></i> ${new Date(post.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                                  <span><i class="bi bi-pen-fill"></i> ${post.authorId.name}</span>
-                              </div>
- <a href="/page/view/post/${post.title}/${post._id}" class="btn btn-primary mt-2" style="color:white;">Read More</a>          </div>
-        </div>
-              `
-              latestPosts.innerHTML += postCard;
-          });
+            if (latestPostsData.posts.length === 0) {
+              latestPosts.innerHTML = `
+                <div class="text-center">
+                  <p>No blogs found. Check back later!</p>
+                </div>
+              `;
+            } else {
+              latestPostsData.posts.slice(0, 4).forEach(post => {
+                const postCard = `
+                  <div class="col-md-4">
+                    <div class="blog-card">
+                      <img src="/uploads/${post.image}" alt="Blog 2">
+                      <h3>${post.title}</h3>
+                      <div class="post-card-meta mt-auto">
+                        <span><i class="bi bi-clock"></i> ${Math.ceil(post.content.split(' ').length / 200)} min read</span>
+                        <span><i class="bi bi-calendar3"></i> ${new Date(post.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                        <span><i class="bi bi-pen-fill"></i> ${post.authorId.name}</span>
+                      </div>
+                      <a href="/page/view/post/${post.title}/${post._id}" class="btn btn-primary mt-2" style="color:white;">Read More</a>
+                    </div>
+                  </div>
+                   <div class="text-center mt-4 my-5">
+    <a href="/page/blog" class="btn btn-primary"style="width:40%;">View All Articles</a>
+</div>
+                `;
+                latestPosts.innerHTML += postCard;
+              });
+            }
+        
 
       }
       fetchLatestPost();
