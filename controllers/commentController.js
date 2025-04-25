@@ -1,5 +1,5 @@
 import Post from "../Database/models/Post.js";
-import User from "../Database/models/User.js";
+import User from "../Database/models/UserModel.js";
 import Comment from "../Database/models/Comment.js";
 // Get all comments
 export const getComments = async (req, res) => {

@@ -1,4 +1,4 @@
-import User from "../Database/models/User.js";
+import User from "../Database/models/UserModel.js";
 
 export const getProfile = async (req, res) => {
   res.render("profile.ejs");

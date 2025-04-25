@@ -1,4 +1,4 @@
-import User from "../Database/models/User.js";
+import User from "../Database/models/UserModel.js";
 import Post from "../Database/models/Post.js";
 
 export const searchController = async (req, res) => {

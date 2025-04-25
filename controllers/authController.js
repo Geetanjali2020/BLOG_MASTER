@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import User from "../Database/models/User.js";
+import User from "../Database/models/UserModel.js";
 
 export const register = async (req, res) => {
   res.render("register");
