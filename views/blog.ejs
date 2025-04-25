@@ -105,69 +105,93 @@
     </div>
 
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="card blog-card mb-4">
-                    <img src="/DigitalMarketing.jpg" class="card-img-top" alt="Blog Post 1">
-                    <div class="card-body">
-                        <h5 class="card-title">The Future of Digital Marketing</h5>
-                        <p class="card-text">Dive into the emerging trends and strategies shaping the digital marketing landscape. Learn how to stay ahead in this rapidly evolving field.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
+
+     
+
+            <section class="py-5">
+                <div class="container mt-4">
+                <div class="row" id="blog-posts-container">
+                        <!-- Blog Posts will be loaded here -->
+    
+    
+                    </div>
+    
+    
+    
+                    <!-- End of Content Indicator -->
+                    <div class="text-center py-4 " id="end-of-content">
+                        <p class="text-muted">You've reached the end of the content</p>
+                        <button class="btn btn-primary mt-2" id="back-to-top"
+                            onclick="javascript:window.scrollTo(0, 0)">Back to Top</button>
                     </div>
                 </div>
-
-                <div class="card blog-card mb-4">
-                    <img src="/Living.jpg" class="card-img-top" alt="Blog Post 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Exploring Sustainable Living</h5>
-                        <p class="card-text">Discover practical tips and insights on how to live a more sustainable lifestyle. From reducing waste to eco-friendly practices, make a positive impact.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-
-                <div class="card blog-card mb-4">
-                    <img src="/CreativeWriting.jpg" class="card-img-top" alt="Blog Post 3">
-                    <div class="card-body">
-                        <h5 class="card-title">The Art of Creative Writing</h5>
-                        <p class="card-text">Unlock your creative potential with these essential writing techniques. Learn how to craft compelling stories and engage your audience.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </div>
-<!-- Sidebar Section -->
-            <div class="col-md-4">
-                <h2 class="mb-4">Sidebar</h2>
-
-                <!-- Search Section -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5>Search</h5>
-                        <input type="text" class="form-control" placeholder="Search...">
-                    </div>
-                </div>
-
-            <div class="col-lg-4">
-                <aside class="sidebar">
-                    <h3>Categories</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-tags mr-2"></i>Technology</a></li>
-                        <li><a href="#"><i class="fas fa-tags mr-2"></i>Lifestyle</a></li>
-                        <li><a href="#"><i class="fas fa-tags mr-2"></i>Writing</a></li>
-                        <li><a href="#"><i class="fas fa-tags mr-2"></i>Travel</a></li>
-                    </ul>
-                    <h3>Recent Posts</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-newspaper mr-2"></i>Latest Tech Innovations</a></li>
-                        <li><a href="#"><i class="fas fa-newspaper mr-2"></i>Tips for a Healthy Lifestyle</a></li>
-                        <li><a href="#"><i class="fas fa-newspaper mr-2"></i>How to Write a Novel</a></li>
-                    </ul>
-                </aside>
-            </div>
-        </div>
-    </div>
-
+            </section>
+    
     <%- include("footer")-%>
+    <script>
+        // Load blog posts on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadBlogPosts();
+        });
 
+    
+        // Load blog posts from the JSON file
+        const loadBlogPosts = async () => {
+            const response = await fetch('/api/posts');
+            const blogPosts = await response.json();
+            const blogPostsContainer = document.getElementById('blog-posts-container');
+
+            blogPosts.forEach((post) => {
+                const postCard = `
+                <div class="card mb-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <img src="/uploads/${post.image}" class="img-fluid rounded-start w-100" alt="${post.title}" style="object-fit: cover; height: 100%; border-radius: 8px;">
+                        </div>
+                        <div class="col-md-6 d-flex flex-column justify-content-center">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    ${post.tags.map(tag => `<span class="badge badge-secondary me-1">${tag}</span>`).join(' ')}
+                                </div>
+                                <h5 class="card-title">${post.title}</h5>
+                                <p class="card-text text-muted">${post.content.split(' ').slice(0, 20).join(' ')}...</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <small class="text-muted"><i class="fas fa-clock"></i> ${Math.ceil(post.content.split(' ').length / 200)} min read</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt"></i> ${new Date(post.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</small>
+                                    <small class="text-muted"><i class="fas fa-user"></i> ${post.authorId.name}</small>
+                                </div>
+                                <a href="/page/view/post/${post.title}/${post._id}" class="btn btn-primary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+                blogPostsContainer.innerHTML += postCard;
+            });
+
+            // Add hover effect for elevation
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mouseover', () => {
+                    card.style.transform = 'translateY(-8px)';
+                    card.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.2)';
+                });
+                card.addEventListener('mouseout', () => {
+                    card.style.transform = 'translateY(0)';
+                    card.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+                });
+            });
+
+            
+
+            // Check if there are no more posts to load
+            if (blogPosts.length === 0) {
+                document.getElementById('end-of-content').classList.remove('d-none');
+                document.getElementById('loading-indicator').classList.add('d-none');
+            } else {
+                document.getElementById('loading-indicator').classList.add('d-none');
+            }
+        };
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

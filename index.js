@@ -7,6 +7,11 @@ import contactRoute from "./routes/contactRoute.js";
 import FeedbackRoute from "./routes/FeedbackRoute.js";
 import postRoute from "./routes/postRoute.js";
 import dashboardRoute from "./routes/dashboardRoute.js";
+import profileRoute from "./routes/profileRoute.js";
+import newsLetter from "./routes/newsLetter.js"
+import searchRoute from "./routes/searchRoute.js";
+import adminRoute from "./routes/adminRoute.js";
+import commentRoute from "./routes/commentRoute.js";
 
 import cors from "cors";
 dotenv.config();
@@ -27,6 +32,11 @@ app.use("/",contactRoute);
 app.use("/",FeedbackRoute);
 app.use("/",postRoute);
 app.use("/",dashboardRoute);
+app.use("/",profileRoute);
+app.use("/",newsLetter);
+app.use("/",searchRoute);
+app.use("/",adminRoute);
+app.use("/",commentRoute);
 app.use(express.static(path.join(__dirname,"public")));
 app.get("/", (req, res) => {
   res.render("index");
@@ -61,4 +71,7 @@ app.get("/page/dashboard",(resq,res) =>{
 app.get("/page/view/post/:title/:id",(req,res) =>{
   const {title,id } = req.params;
   res.render("viewpost.ejs",{title,id});
+});
+app.use((req, res, next) => {
+  res.status(404).render("404");
 });

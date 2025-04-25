@@ -1,39 +1,286 @@
-  <!-- Navbar -->
-   <style>
-    .navbar {
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+<!-- Header -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <style>
+    .modal-backdrop.show {
+      z-index: 10;
     }
-   </style>
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#"style="color:white;"">BlogMaster</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" style="color:white;" href="/">Home</a></li>
-            <li class="nav-item"><a class="nav-link" style="color:white;" href="/page/blog">Blogs</a></li>
-            <li class="nav-item"><a class="nav-link" style="color:white;" href="/page/about">About</a></li>
-            <li class="nav-item"><a class="nav-link" style="color:white;" href="/page/Feedback">Feedback</a></li>
-            <li class="nav-items"><a class="nav-link" style="color:white;"  href="/page/contact">Contact</a></li>
+
+    .modal-fullscreen {
+      z-index: 1055 !important;
+      /* Bootstrap default is 1050 for modal */
+    }
+
+    /* .modal-backdrop {
+    z-index: 1050 !important;
+  } */
+    .social-icons {
+      margin: auto 10px;
+    }
+
+    .social-icons a {
+      color: #555;
+      margin-left: 15px;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #0d6efd;
+    }
+
+    .modal.show {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .blog-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .blog-brand span {
+      color: #0d6efd;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <div class="container">
+        <a class="blog-brand" href="/">Blog<span>Master</span></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" id="navbarIcon"></span>
+        </button>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+
+              <a class="nav-link" href="/" id="homeLink">Home</a>
+            </li>
+            <a class="nav-link" href="/page/blog" id="blogLink">Blog</a>
+            <a class="nav-link" href="/page/about" id="aboutLink">About</a>
+            <a class="nav-link" href="/page/contact" id="contactLink">Contact</a>
+
+
             <script>
-                if (!localStorage.getItem("token")){
-                    document.write(`<li class="nav-item"><a class="nav-link" href="/auth/register" style="color:white;">Register</a></li>
-            <li class="nav-item"><a class="nav-link" href="/auth/login" style="color:white;">Login</a></li>`)
-                }else{
-                    document.write( ` <li class="nav-item"><button class="nav-link" onclick="doLogout()" style="color:white; background-color:transparent; border:none;">Logout</button></li>`)
-                }
-const doLogout=()=>{
-localStorage.removeItem("token")
-window.location.href="/"
-}
+              const token = localStorage.getItem('token');
+              if (!token) {
+                document.write('<li class="nav-item"><a class="nav-link" id="loginLink" href="/auth/login">Login</a></li>');
+                document.write('<li class="nav-item"><a class="nav-link" id="registerLink" href="/auth/register">Register</a></li>');
+              } else {
+                document.write('<li class="nav-item"><a class="nav-link" id="dashboardLink" href="/page/dashboard">Dashboard</a></li>');
+
+              }
+              const doLogout = () => {
+                localStorage.removeItem('token');
+                window.location.href = '/auth/login';
+              }
             </script>
-        </ul>
+            <script>
+              const links = {
+                '/': 'homeLink',
+                '/page/blog': 'blogLink',
+                '/page/about': 'aboutLink',
+                '/page/contact': 'contactLink',
+                '/auth/page/login': 'loginLink',
+                '/auth/page/register': 'registerLink',
+                '/page/dashboard': 'dashboardLink',
+              };
+              const currentPath = window.location.pathname;
+              if (links[currentPath]) {
+                document.getElementById(links[currentPath]).classList.add('active');
+              }
+            </script>
+
+          </ul>
+
+
+
+          <div id="navProfile">
+
+            <div class="d-flex align-items-center ms-lg-4">
+              <div class="search-box me-3" style="margin:auto 3rem;">
+                <!-- <input type="text" class="search-input" id="searchInput" placeholder="Search..."> -->
+                <button class="search-button" data-bs-toggle="modal" data-bs-target="#searchModal"
+                  style="border-radius: 8px;padding: 0.8rem;margin: auto 10px;">
+                  <i class="bi bi-search"></i>
+                </button>
+
+                <!-- Modal -->
+
+                <div class="modal modal-fullscreen" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
+                  aria-hidden="true" style="z-index: 10;border-radius: 10px;">
+                  <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 10px;">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="searchModalLabel">Search Posts by title, Authors by name</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div
+                        style="padding:5px; display: flex; justify-content: center; gap: 4px; border: 1px solid black; margin: 10px; border-radius: 9px;">
+                        <input type="text" id="searchInput" placeholder="Search..." aria-label="Search"
+                          class="form-control" style="border: none;" minlength="3" pattern=".{3,}"
+                          oninput="this.setCustomValidity('')"
+                          oninvalid="this.setCustomValidity('Please enter at least 3 characters')">
+                        <button class="btn btn-secondary" onclick="document.getElementById('searchInput').value = '';"
+                          style="border: none; background-color: transparent; color: black;"><i
+                            class="bi bi-x-circle"></i></button>
+                        <button class="btn btn-primary" onclick="search()" id="searchButton">Search</button>
+                      </div>
+                      <div class="modal-body" id="searchResults" style="width: 100%;">
+                        <!-- Search results will be displayed here -->
+                        <div id="postResult" style="width: 100%;"></div>
+                        <div id="userResult" style="width: 100%;"></div>
+                        <div id="noResults" style="width: 100%;"></div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <script>
+                  const searchInput = document.getElementById('searchInput');
+                  const searchButton = document.querySelector('.search-button');
+                  const postResult = document.getElementById('postResult');
+                  const userResult = document.getElementById('userResult');
+                  const noResults = document.getElementById('noResults');
+
+                  const search = async () => {
+                    const searchValue = searchInput.value;
+                    const response = await fetch(`/api/search?q=${searchValue}`);
+                    const results = await response.json();
+                    console.log(results);
+
+                    // Handle search results here
+                    if (results.posts.length === 0 && results.users.length === 0) {
+                      noResults.innerHTML = '<p style="text-align:center;"> No results found.</p>';
+                    } else {
+                      noResults.innerHTML = '';
+                      // Process and display posts and users
+                      postResult.innerHTML = results.posts.map(post => ` 
+                                    <div class="post-card h-100">
+                                    
+                                        <div class="post-card-img" style="height:250px;">
+                                            <div class="post-category">${post.tags[0]}</div>
+                                            <img src="/uploads/${post.image}" alt="Post Image" class="w-100 img-fluid" >
+                                        </div>
+                                        <div class="post-card-body d-flex flex-column">
+                                            <h3 class="post-card-title">${post.title}</h3>
+                                            <p class="post-card-text">Click to read more...</p>
+                                            <div class="post-card-meta mt-auto">
+                                                <span><i class="bi bi-clock"></i> ${Math.ceil(post.content.split(' ').length / 200)} min read</span>
+                                                <span><i class="bi bi-calendar3"></i> ${new Date(post.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                                <span><i class="bi bi-pen-fill"></i> ${post.authorId.name}</span>
+                                            </div>
+                                            <a href="/page/view/post/${post.title}/${post._id}" class="btn btn-primary mt-2">Read More</a>
+                                        </div>
+                                    
+                                </div>`).join('');
+                      userResult.innerHTML = results.users.map(user => `
+                        <div class="card mb-3" style="max-width: 540px;">
+                          <div class="row g-0">
+                          <div class="col-md-4">
+                            <img src="/profile/${user.profileImage}" class="img-fluid rounded-start" alt="${user.name}">
+                          </div>
+                          <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title">${user.name}</h5>
+                            <p class="card-text">${user.about}</p>
+                            <p class="card-text"><small class="text-muted">${user.jobTitle}</small></p>
+                            <a href="/page/profile/${user._id}" class="btn btn-primary">View Profile</a>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                        `).join('');
+                    }
+                    noResults.innerHTML = results.posts.length === 0 && results.users.length === 0 ? 'No results found.' : '';
+                  }
+
+
+                </script>
+              </div>
+
+            </div>
+          </div>
+
+          <div>
+            <script>
+              if (token) {
+                document.write(`
+                <div class="dropdown" style="position: relative; display: inline-block;">
+                  <button class="btn btn-secondary" type="button" id="profileDropdown" onclick="toggleDropdown()">
+                    <i class="bi bi-person-circle"></i>
+                  </button>
+                  <div class="dropdown-menu" id="dropdownMenu" style="display: none; position: absolute; right: 0; background-color: white; border: 1px solid #ccc; border-radius: 5px; z-index: 1000; min-width: 150px; padding: 10px;">
+                    <a class="dropdown-item" href="/page/profile" style="display: block; padding: 5px 10px; text-decoration: none; color: black;">Profile</a>
+                    <hr class="dropdown-divider" style="margin: 5px 0;">
+                    <button class="dropdown-item" onclick="doLogout()" style="display: block; padding: 5px 10px; border: none; background: none; text-align: left; width: 100%; color: black;">Logout</button>
+                  </div>
+                </div>
+               
+                `);
+              }
+            </script>
+            <script>
+              function toggleDropdown() {
+                const dropdownMenu = document.getElementById('dropdownMenu');
+                dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+              }
+              document.addEventListener('click', function (event) {
+                const dropdown = document.getElementById('profileDropdown');
+                const dropdownMenu = document.getElementById('dropdownMenu');
+                if (!dropdown.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                  dropdownMenu.style.display = 'none';
+                }
+              });
+            </script>
+          </div>
+        </div>
       </div>
-    </div>
-  </nav>
+      </div>
+      <!-- <div class="social-icons d-flex ">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div> -->
+    </nav>
+  </header>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbarToggler = document.querySelector(".navbar-toggler");
+      const navbarIcon = document.getElementById("navbarIcon");
+
+      navbarToggler.addEventListener("click", function () {
+        navbarIcon.classList.toggle("open");
+      });
+    });
+  </script>
+</body>
+
+</html>

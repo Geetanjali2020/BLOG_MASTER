@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Hero Section</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero {
+            background: #f5f7fa;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            z-index: 1;
+        }
+        .hero-content {
+            text-align: left;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            padding:  2rem ;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            padding:2rem auto;
+            font-size: 1.2rem;
+            color: #666;
+        }
+        .btn-primary {
+            background: #2575fc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 25px;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background: #6a11cb;
+        }
+        .imgage {
+            max-width: 90%;
+            height: 70%;
+            padding: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 text-center">
+                    <img src="/BlogHero.webp" class="image img-fluid mt-5" alt="Blog Illustration" style="max-width: 70%; height: auto;">
+                </div>
+                <div class="col-lg-6 col-md-12 hero-content">
+                    <h1>Explore Inspiring Stories</h1>
+                    <p class="lead text-secondary mt-4">
+                        Dive into a world where creativity meets curiosity. Our collection of stories brings together a vibrant mix of voices, ideas, and experiences — designed to ignite your imagination and fuel your passion.
+                      </p>
+                  
+                      <p class="text-muted">
+                        Whether you're fascinated by cutting-edge technology, passionate about personal development, or curious about cultures and lifestyles around the world, you'll find content that resonates deeply. Each article is crafted to not only inform, but also to uplift and empower.
+                      </p>
+                  
+                  
+                     <a role="button" href="/page/blog" class="btn btn-primary">Read Articles</a>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+      <!-- Modal -->
+      <div class="modal modal-fullscreen" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="searchModalLabel">Search Posts by title, Authors by name</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div
+            style="padding:5px; display: flex; justify-content: center; gap: 4px; border: 1px solid black; margin: 10px; border-radius: 9px;">
+            <input type="text" id="searchInput" placeholder="Search..." aria-label="Search"
+              class="form-control" style="border: none;" minlength="3" pattern=".{3,}"
+              oninput="this.setCustomValidity('')"
+              oninvalid="this.setCustomValidity('Please enter at least 3 characters')">
+            <button class="btn btn-secondary" onclick="document.getElementById('searchInput').value = '';"
+              style="border: none; background-color: transparent; color: black;"><i
+                class="bi bi-x-circle"></i></button>
+            <button class="btn btn-primary" onclick="search()" id="searchButton">Search</button>
+          </div>
+          <div class="modal-body" id="searchResults" style="width: 100%;">
+            <!-- Search results will be displayed here -->
+            <div id="postResult" style="width: 100%;"></div>
+            <div id="userResult" style="width: 100%;"></div>
+            <div id="noResults" style="width: 100%;"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
