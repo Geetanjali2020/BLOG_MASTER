@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
-
+// THis is test Comment
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
